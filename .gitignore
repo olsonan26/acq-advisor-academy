@@ -1,0 +1,13 @@
+node_modules
+.next
+.env*
+!.env.example
+.vercel
+test-results
+research/*.html
+*.tsbuildinfo
+references/source-pack/
+references/visuals/
+__pycache__/
+*.pyc
+scripts/sanitize-public.py

@@ -1,0 +1,9 @@
+const assert=require('node:assert/strict');
+(async()=>{
+ const url='http://127.0.0.1:3001';const r=await fetch(url+'/',{redirect:'manual'});assert.equal(r.status,307);assert.ok(r.headers.get('location').endsWith('/access'));console.log('PASS: private page redirects without signed cookie');
+ const denied=await fetch(url+'/api/practice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'tutor',question:'Explain profit'})});assert.equal(denied.status,401);console.log('PASS: protected practice API rejects anonymous access');
+ const bad=await fetch(url+'/api/access',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:'not-the-password'})});assert.equal(bad.status,401);console.log('PASS: invalid password denied');
+ const login=await fetch(url+'/api/access',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:'test-only-academy-access'})});assert.equal(login.status,200);const raw=login.headers.get('set-cookie');assert.ok(raw.includes('HttpOnly'));assert.ok(raw.includes('Secure'));assert.ok(raw.includes('SameSite=strict'));const cookie=raw.split(';')[0];const allowed=await fetch(url+'/finance',{headers:{Cookie:cookie}});assert.equal(allowed.status,200);console.log('PASS: valid signed session permits finance route');
+ const answer=await fetch(url+'/api/practice',{method:'POST',headers:{'Content-Type':'application/json',Cookie:cookie},body:JSON.stringify({mode:'tutor',question:'Explain gross profit'})});assert.equal(answer.status,200);const json=await answer.json();assert.equal(json.mode,'Guided curriculum tutor');console.log('PASS: authenticated practice API responds; guided mode disclosed');
+ const forged=await fetch(url+'/finance',{headers:{Cookie:cookie+'x'},redirect:'manual'});assert.equal(forged.status,307);console.log('PASS: tampered session rejected');
+})().catch(e=>{console.error(e);process.exitCode=1});

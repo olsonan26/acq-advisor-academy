@@ -1,0 +1,192 @@
+{
+  "provenance": "Actual submissions completed through the running interface in an isolated local session. Demonstration scores are not the student’s personal results.",
+  "finance": {
+    "id": "c0ac4d2b-d69c-4454-8e8e-5571dc161b33",
+    "type": "finance",
+    "topic": "Payback",
+    "score": 100,
+    "answer": "5",
+    "at": "2026-10-13T04:59:33.204Z",
+    "details": {
+      "drill": "payback-1",
+      "expected": 5,
+      "elapsedSeconds": 0,
+      "timed": false,
+      "targetSeconds": 45
+    }
+  },
+  "case": {
+    "id": "d1ed43ec-34e9-4974-8985-26cff00089b8",
+    "type": "case",
+    "topic": "hvac",
+    "score": 97,
+    "answer": "Define the Problem: Define the problem as a growing installation backlog and longer waits despite rising sales. Confirm a two-week diagnostic window and a 90-day improvement goal with the founder. The growth figures are facts; the marginal economics of another crew remain unknown.\n\nBreak Down the Problem: Break operating performance into demand, conversion, delivery capacity, quality and cash. Compare a dispatch/capacity hypothesis with a rework/quality hypothesis. Separately test whether bad-fit sales create longer jobs rather than assuming every booking is equal.\n\nPlan the Work: Plan the work: request crew hours, travel time, job duration, backlog age and callbacks by installation. The operations lead should produce a five-day baseline. Finance should provide a 13-week cash forecast before any hiring commitment.\n\nWork the Plan: Work the plan: 75 booked jobs minus 60 completed means backlog grows by 15 jobs per month. Stable 3% callbacks and stable satisfaction weaken the quality hypothesis. Profit is $180,000 minus $108,000 minus $54,000 = $18,000; operating margin is 10%. CAC is $12,000 divided by 60 = $200. Delivery capacity and dispatch are the likely primary constraint, not lack of demand.\n\nBuild the Case: Build the case: compare better dispatch, extra crew capacity, and more advertising. Pilot geographic scheduling first because nearby jobs are currently placed on different days. Assume $1,200 gross contribution per additional delivered job only if the current $3,000 price and $1,800 direct cost are marginally representative; confirm that before estimating up to $18,000 from 15 additional jobs. Cash timing is still unknown.\n\nMake the Case: Make the case: I recommend a two-week dispatch pilot before increasing ads. Current demand exceeds delivery by 15 jobs monthly, while measured quality is stable. We should test whether routing frees usable capacity and protects contribution. I invite a peer to challenge the diagnosis; I would correct it if crew-time or customer-fit evidence explains the gap better.\n\nStart the Change: Run a two-week dispatch pilot. Track baseline backlog age, completed jobs and callback rate. Target no further backlog growth while keeping callbacks at or below 3%. Review each Friday and stop or revise if quality falls or throughput does not improve.",
+    "at": "2026-10-13T05:01:15.629Z",
+    "details": {
+      "margin": "10",
+      "cac": "200",
+      "revealed": [
+        "operations",
+        "finance",
+        "acquisition",
+        "cash",
+        "cohort"
+      ],
+      "report": {
+        "score": 97,
+        "categories": [
+          {
+            "name": "Business reasoning",
+            "weight": 25,
+            "earned": 25
+          },
+          {
+            "name": "Financial accuracy",
+            "weight": 20,
+            "earned": 20
+          },
+          {
+            "name": "Root-cause diagnosis",
+            "weight": 20,
+            "earned": 20
+          },
+          {
+            "name": "Communication",
+            "weight": 15,
+            "earned": 15
+          },
+          {
+            "name": "Practical execution",
+            "weight": 10,
+            "earned": 7
+          },
+          {
+            "name": "Collaboration and coachability",
+            "weight": 10,
+            "earned": 10
+          }
+        ],
+        "correct": [
+          "Operating margin is correct.",
+          "Acquisition CAC is correct.",
+          "You explicitly considered another explanation.",
+          "Your diagnosis names the key constraint."
+        ],
+        "gaps": [
+          "Name one accountable owner, deadline, baseline, target, and review rhythm."
+        ],
+        "mode": "Transparent practice checklist; semantic judgment is limited. This is not an official hiring assessment.",
+        "constraint": "Delivery capacity and dispatch",
+        "stronger": "“My current hypothesis is delivery capacity and dispatch. Operating margin is 10.00% and acquisition CAC is $200.00. I would confirm the relevant operational evidence and compare another plausible cause before treating that hypothesis as proven. My first action is: Run a two-week dispatch and capacity pilot before increasing ad spend. Map jobs geographically; measure available installation slots; compare crew cost with marginal contribution. Jobs completed, backlog age, contribution per crew-day, and callbacks; operations lead owns the pilot. The main guardrail is: Adding advertising before reliable fulfillment can worsen waits and refunds. I would invite the team to challenge the evidence and update the plan if the test fails.”",
+        "answerKey": {
+          "constraint": "Delivery capacity and dispatch",
+          "accept": [
+            "capacity",
+            "dispatch",
+            "backlog",
+            "technician",
+            "fulfillment"
+          ],
+          "facts": [
+            {
+              "key": "operations",
+              "label": "Delivery and capacity",
+              "triggers": [
+                "capacity",
+                "operation",
+                "backlog",
+                "delivery",
+                "technician",
+                "utilization",
+                "wait"
+              ],
+              "text": "Crews can finish 60 installations monthly. Booked work has risen to 75 monthly for three months. Backlog is growing 15 jobs each month; scheduling places nearby jobs on different days. Warranty callback rate is stable at 3%."
+            },
+            {
+              "key": "cohort",
+              "label": "Customer follow-up",
+              "triggers": [
+                "retention",
+                "renew",
+                "cancel",
+                "quality"
+              ],
+              "text": "Maintenance renewal is 78% annually. Complaints mainly mention waiting; recent installation satisfaction is stable. No evidence establishes that poor installation quality caused the backlog."
+            }
+          ],
+          "action": "Run a two-week dispatch and capacity pilot before increasing ad spend. Map jobs geographically; measure available installation slots; compare crew cost with marginal contribution.",
+          "risk": "Adding advertising before reliable fulfillment can worsen waits and refunds.",
+          "measurement": "Jobs completed, backlog age, contribution per crew-day, and callbacks; operations lead owns the pilot."
+        },
+        "citations": [
+          "Business Re-Imagined slides 42–44: seven-step process",
+          "Business Re-Imagined slides 62–66: questions, synthesis, discovery versus advocacy",
+          "User-supplied Advisory Practice transcript, approximate 4:27: mental math; timestamp unverified"
+        ],
+        "aiFeedback": null,
+        "aiStatus": "Live AI is not configured. Guided feedback is active."
+      }
+    }
+  },
+  "interview": {
+    "id": "3106647b-3ae3-4447-87e8-8e7f23e6d02d",
+    "type": "interview",
+    "topic": "Two-step mental math",
+    "score": 95,
+    "answer": "Direct costs are 40% of $200,000, or $80,000. Gross profit is $120,000 and operating profit is $30,000 after $90,000 overhead. I calculate operating margin as 20%. CAC is $10,000 divided by 50, or $200; acquisition is already in overhead, so I do not subtract it twice. A 10% revenue increase creates $20,000 additional sales and $12,000 incremental operating profit because the contribution margin is 60%, if direct costs remain proportional and delivery capacity can handle the work. I would ask the operations lead to confirm capacity and finance to check cash timing. I invite peer feedback and would correct the recommendation when new evidence changes an assumption.",
+    "at": "2026-10-13T05:01:56.729Z",
+    "details": {
+      "score": 95,
+      "categories": [
+        {
+          "name": "Business reasoning",
+          "weight": 25,
+          "earned": 25
+        },
+        {
+          "name": "Financial accuracy",
+          "weight": 20,
+          "earned": 15
+        },
+        {
+          "name": "Root-cause diagnosis",
+          "weight": 20,
+          "earned": 20
+        },
+        {
+          "name": "Communication",
+          "weight": 15,
+          "earned": 15
+        },
+        {
+          "name": "Practical execution",
+          "weight": 10,
+          "earned": 10
+        },
+        {
+          "name": "Collaboration and coachability",
+          "weight": 10,
+          "earned": 10
+        }
+      ],
+      "correct": [
+        "You explain reasoning rather than only listing an action.",
+        "You acknowledge a condition, test, or uncertainty.",
+        "You include an execution or measurement element.",
+        "You reference correction, feedback, or team input. This does not verify actual live behavior."
+      ],
+      "gaps": [
+        "Recalculate: operating profit $30,000; margin 15%; CAC $200; incremental operating profit $12,000 if costs and capacity hold.",
+        "The checklist matches written evidence, not intent. A facilitator or configured AI should also check factual consistency, unsupported claims, and spoken delivery."
+      ],
+      "stronger": "“Direct costs are $80,000, leaving $120,000 gross profit. Subtracting $90,000 overhead gives $30,000 operating profit and a 15% margin. CAC is $10,000 divided by 50, or $200. Extra revenue is $20,000, and 60% contributes $12,000 if costs and capacity hold.”",
+      "roundChecks": [
+        "Operating profit $30,000",
+        "Margin 15% and CAC $200",
+        "Incremental profit $12,000 and stated assumptions"
+      ],
+      "aiFeedback": null,
+      "aiStatus": "Live AI is not configured. Guided feedback is active."
+    }
+  }
+}

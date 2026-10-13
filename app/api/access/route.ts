@@ -1,0 +1,4 @@
+import {NextResponse} from 'next/server';
+import {timingSafeEqual} from 'node:crypto';
+import {accessToken} from '@/lib/access';
+export async function POST(req:Request){const secret=process.env.ACADEMY_ACCESS_PASSWORD;if(!secret)return NextResponse.json({error:'Private access is not configured.'},{status:503});try{const b=await req.json();if(typeof b.password!=='string'||b.password.length!==secret.length||!timingSafeEqual(Buffer.from(b.password),Buffer.from(secret)))return NextResponse.json({error:'Invalid password.'},{status:401});const res=NextResponse.json({ok:true});res.cookies.set('academy-access',accessToken(secret,Date.now()+7*86400000),{httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'strict',path:'/',maxAge:7*86400});return res;}catch{return NextResponse.json({error:'Invalid request.'},{status:400})}}
