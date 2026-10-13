@@ -77,35 +77,13 @@ Verification after configuration: ask the professor a question, verify that its 
 
 Device persistence is tested. Supabase cloud sign-in, RLS in a real database, and cross-device synchronization remain unverified until a dedicated project is configured. Local progress may be replaced by an existing cloud profile on sign-in; export first if preserving a device-only history matters.
 
-## GitHub and Vercel deployment
+## Live access and deployment
 
-The local project has its own Git repository and commit. Do not replace an unrelated existing project or repository. The user selected the dedicated public repository olsonan26/acq-advisor-academy. Original source-pack binaries and transcripts are excluded from Git.
+Open [the protected academy](https://acq-advisor-academy.vercel.app). The production password was configured with the user's explicit approval and is saved outside this repository. No password or API secret is included in GitHub.
 
-1. Use the dedicated repository [olsonan26/acq-advisor-academy](https://github.com/olsonan26/acq-advisor-academy). Do not use an unrelated production repository.
-2. Push this local repository to that repository:
+The dedicated [GitHub repository](https://github.com/olsonan26/acq-advisor-academy) is published, and its existing Vercel project is connected to `main`. Next.js, Node.js 24.x, `pnpm install --frozen-lockfile`, and `pnpm build` are configured. Production sign-in, financial practice with reload persistence, founder evidence, seven-step diagnosis feedback, and interview evaluation were verified on the hosted site.
 
-```powershell
-git remote add origin https://github.com/olsonan26/acq-advisor-academy.git
-git push -u origin main
-```
-
-3. In Vercel, select the intended account/team, choose **Add New → Project**, and import that repository. Framework: Next.js; repository root: this project root; install: `pnpm install --frozen-lockfile`; build: `pnpm build`; Node.js: 24.x. Do not select one of your unrelated production projects.
-4. Set `ACADEMY_ACCESS_PASSWORD` to a long, unique secret in both preview and production. Leave `ACADEMY_LOCAL_DEMO` unset. Add AI and Supabase values only if ready to enable those services.
-5. Deploy, then verify that unauthenticated requests reach the access page and that the correct password permits lessons and API workflows. Repeat the finance → saved history and case → assessment workflows on the deployment.
-
-The current build has **no live Vercel URL**. Exact blocker:
-
-```text
-Account link: the selected Vercel account
-Operation: POST /v11/projects
-HTTP: 403 forbidden
-Scope: the selected account scope
-Team ID: the selected team
-Message: Not authorized: Trying to access resource under that scope.
-The API asks for re-authentication to that scope or a token with access.
-```
-
-The connector could list projects, but its teams and Git deployment context were empty. No dedicated Vercel academy project was found. The user subsequently provided the empty academy GitHub repository with push permission; only that dedicated repository is used. A Vercel CLI was not installed and the standard local CLI credential paths were absent, so there was no authenticated CLI fallback. The error does not reveal whether the missing access is a role, connector scope, or stale credential; it is specifically the create-project operation that failed. No production deployment or existing project was changed.
+The earlier project-creation HTTP 403 was resolved by using the dedicated project subsequently created by the user. No unrelated production project was overwritten. See `DEPLOY.md` for ongoing configuration and deployment steps and `HISTORY.md` for the distinction between public publication commits and retained original local history.
 
 ## Validation
 
@@ -121,7 +99,6 @@ See `VERIFICATION.md` for completed checks and remaining gaps. Optional micropho
 
 ## Remaining work
 
-- Restore deployment permission or authorize a dedicated academy repository/project, then deploy and verify.
 - Configure and test live AI and Supabase cloud persistence.
 - Obtain precise official lesson transcripts/captions; analyze teaching before adding source-attributed frameworks, examples, exceptions, and timestamps.
 - Supply the Director of Business Workshops job posting, résumé, and verified history to personalize defensible leadership stories.

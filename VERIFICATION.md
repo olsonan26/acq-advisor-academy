@@ -25,7 +25,7 @@ Six private-access integration checks also passed against a separate local produ
 
 ## Automated content and calculation checks
 
-17 tests passed:
+18 tests passed:
 
 - Every expected financial result accepted; blank, invalid, and wrong results rejected.
 - All 20 financial answers match independent arithmetic, including break-even rounding, LTV assumptions, cash flow, and exact Georgia margin rounding.
@@ -47,7 +47,7 @@ Production build and TypeScript checks passed. Dependencies are pinned and a mat
 - Live AI generation: no model ID, gateway key, or OIDC token configured. Guided logic is tested and clearly labeled.
 - Supabase sign-in, RLS enforcement on a real database, and cross-device synchronization: optional adapter and SQL are supplied; no academy database configured or existing database changed.
 - Speech recognition with actual audio: optional browser interface exists; no microphone recording tested.
-- Deployment: denied by Vercel with HTTP 403 on project creation; no live URL claimed.
+- Preview deployments: private access configuration is production-only; separate previews have not been tested.
 - Spoken official course teaching: no public subtitle tracks located; no video claimed as watched.
 - Full PowerPoint rendered-slide review: text and tables parsed from original, extraction cross-checked, selected image-only assets inspected; full rendering unfinished.
 - Candidate experience and exact role requirements: résumé and job description still absent.
@@ -63,4 +63,18 @@ Default case/interview scores are a transparent educational text checklist. They
 - Interview mental math: 95/100; submitted 20% margin corrected to 15%; financial category 15/20.
 - The `/review` page was opened and checked against these actual records, including feedback and source references. Completed screenshots are under `public/demos/`.
 - The core suite now has 18 passing tests; the new test verifies all seven recorded SPS steps and the two demonstrated corrections. Production build and TypeScript checks passed after the review changes.
-- GitHub publishing targets only the user-provided `olsonan26/acq-advisor-academy` repository, verified empty with push permission. It is public at the user's explicit request. Deployment is a separate, still-unverified action.
+- GitHub publishing targets only the user-provided `olsonan26/acq-advisor-academy` repository, verified empty with push permission. It is public at the user's explicit request. Production deployment was subsequently completed and verified.
+
+## Hosted production verification
+
+Live site: https://acq-advisor-academy.vercel.app. Vercel returned READY for the protected Next.js production deployment.
+
+- Anonymous page redirected to `/access`; anonymous practice API returned HTTP 401.
+- Existing private password signed in successfully; protected dashboard showed the 13/19/75 source distinction.
+- Browser financial exercise: 80 customers × $250 = $20,000, accepted as correct. One test attempt persisted after a full reload on the hosted origin. This is a deployment test attempt, not the student's own assessment.
+- Authenticated hosted founder API released the specific 75 bookings / 60 installations / 15 monthly backlog / 3% callback evidence.
+- The recorded complete seven-step HVAC submission was replayed against the hosted API: 97/100, with accountable-owner correction.
+- The recorded interview response was replayed against the hosted API: 95/100, with 20% margin corrected to 15%.
+- Hosted responses explicitly reported guided feedback and no configured live AI.
+
+The production password is stored outside the repository. Original source history is retained locally; public publication ancestry is separate. No ZIP is required or newly generated.
