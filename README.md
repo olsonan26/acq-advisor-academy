@@ -13,7 +13,7 @@ Copy-Item .env.example .env.local
 pnpm dev
 ```
 
-Open `http://127.0.0.1:3000`. The supplied example enables a local-only demo. Device progress, lessons, financial exercises, guided founder interviews, case assessment, and interview rehearsal require no third-party credentials.
+Open `http://127.0.0.1:3000`. No academy password or demo flag is required. Device progress, lessons, financial exercises, guided founder interviews, case assessment, and interview rehearsal require no third-party credentials.
 
 For an optimized local build:
 
@@ -22,7 +22,7 @@ pnpm build
 pnpm start
 ```
 
-Keep `.env.local` private. Do not deploy with `ACADEMY_LOCAL_DEMO=true`.
+Keep `.env.local` private. The public academy does not require an access password. Protect any optional AI and Supabase credentials.
 
 ## What is included
 
@@ -34,7 +34,7 @@ Keep `.env.local` private. Do not deploy with `ACADEMY_LOCAL_DEMO=true`.
 - Device-persistent completion, drafts, answers, scores, and practice history; JSON export.
 - Source inventory of 75 official lesson pages, 87 parsed PowerPoint slides (83 visible), and two fully read supplied recruitment transcripts.
 - Optional live AI coaching through Vercel AI Gateway; optional Supabase email sign-in and per-user cloud progress.
-- Private production password gate with signed expiring cookies, protected layouts, and API checks. Production fails closed without access configuration.
+- Public, password-free academy pages and practice API. Optional Supabase email sign-in is only for cross-device progress.
 
 ## Teaching and source boundaries
 
@@ -79,9 +79,9 @@ Device persistence is tested. Supabase cloud sign-in, RLS in a real database, an
 
 ## Live access and deployment
 
-Open [the protected academy](https://acq-advisor-academy.vercel.app). The production password was configured with the user's explicit approval and is saved outside this repository. No password or API secret is included in GitHub.
+Open [the academy](https://acq-advisor-academy.vercel.app) directly; no password is required. Previous private sign-in was removed October 15, 2026. No password or API secret is included in GitHub.
 
-The dedicated [GitHub repository](https://github.com/olsonan26/acq-advisor-academy) is published, and its existing Vercel project is connected to `main`. Next.js, Node.js 24.x, `pnpm install --frozen-lockfile`, and `pnpm build` are configured. Production sign-in, financial practice with reload persistence, founder evidence, seven-step diagnosis feedback, and interview evaluation were verified on the hosted site.
+The dedicated [GitHub repository](https://github.com/olsonan26/acq-advisor-academy) is published, and its existing Vercel project is connected to `main`. Next.js, Node.js 24.x, `pnpm install --frozen-lockfile`, and `pnpm build` are configured. Financial practice with reload persistence, founder evidence, seven-step diagnosis feedback, and interview evaluation were verified on the previously password-protected hosted site.
 
 The earlier project-creation HTTP 403 was resolved by using the dedicated project subsequently created by the user. No unrelated production project was overwritten. See `DEPLOY.md` for ongoing configuration and deployment steps and `HISTORY.md` for the distinction between public publication commits and retained original local history.
 

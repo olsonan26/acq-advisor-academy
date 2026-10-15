@@ -7,7 +7,6 @@ import {interviewRounds} from '../data/interview';
 import {askFounder,caseKey} from '../lib/case-engine';
 import {assessCase} from '../lib/assessment';
 import {assessInterview} from '../lib/interview-assessment';
-import {accessToken,verifyAccess} from '../lib/access';
 import sources from '../data/sources.json';
 import slides from '../data/slides.json';
 import demonstrations from '../data/demonstrations.json';
@@ -27,5 +26,4 @@ test('Case arithmetic scoring rejects incorrect margin and CAC',()=>{const a={st
 test('No arithmetic double counting acquisition in overhead',()=>{for(const c of cases){const margin=(c.revenue-c.direct-c.overhead)/c.revenue*100;const r=assessCase(c.id,{steps:Array(7).fill('I need to test the evidence before recommending.'),margin:String(margin),cac:String(c.marketing/c.newCustomers),revealed:['finance','acquisition']});assert.equal(r.categories[1].earned,20,c.id);assert.ok(r.score>=0&&r.score<=100)}});
 test('Interview math feedback tests all four expected answers',()=>{const r=assessInterview(1,'Operating profit is $30,000 and margin 15%; CAC is $200. Extra profit is $12,000 if capacity and costs hold. I would test the assumptions and invite peer feedback.');assert.equal(r.categories[1].earned,20);assert.ok(r.score<=100)});
 test('Source ledger retains precise titles, URLs, order, and unverified timestamps',()=>{assert.equal(sources.length,75);for(const s of sources){assert.ok(s.url.startsWith('https://www.acquisition.com/training/'));assert.equal(s.duration,null);assert.equal(s.timestamps.length,0);assert.ok(s.status.includes('unverified'));assert.equal(s.captionTracks?.length||0,0)}});
-test('Private access rejects expired or tampered tokens',()=>{const secret='test-password-not-used-in-production';const token=accessToken(secret,Date.now()+10000);assert.equal(verifyAccess(token,secret),true);assert.equal(verifyAccess(token+'x',secret),false);assert.equal(verifyAccess(accessToken(secret,Date.now()-10),secret),false);assert.equal(verifyAccess('',secret),false)});
 test('Completed demonstrations preserve actual numerical corrections and all seven steps',()=>{assert.equal(demonstrations.finance.details.expected,5);assert.equal(demonstrations.finance.score,100);assert.equal(demonstrations.case.answer.split('\n\n').length,7);assert.equal(demonstrations.case.score,97);assert.equal(demonstrations.case.details.report.categories[1].earned,20);assert.ok(demonstrations.case.details.report.gaps.some(g=>g.includes('accountable owner')));assert.equal(demonstrations.interview.score,95);assert.ok(demonstrations.interview.details.gaps.some(g=>g.includes('margin 15%')))});

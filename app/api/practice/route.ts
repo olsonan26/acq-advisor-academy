@@ -6,11 +6,7 @@ import {assessCase} from '@/lib/assessment';
 import {assessInterview} from '@/lib/interview-assessment';
 import {interviewRounds} from '@/data/interview';
 import {aiCoach} from '@/lib/ai-coach';
-import {verifyAccess} from '@/lib/access';
 export async function POST(req:Request){
- const secret=process.env.ACADEMY_ACCESS_PASSWORD;const token=(req.headers.get('cookie')||'').split(';').map(x=>x.trim()).find(x=>x.startsWith('academy-access='))?.slice('academy-access='.length)||'';
- if(secret&&!verifyAccess(token,secret))return NextResponse.json({error:'Sign in to the private academy.'},{status:401});
- if(!secret&&process.env.NODE_ENV==='production'&&process.env.ACADEMY_LOCAL_DEMO!=='true')return NextResponse.json({error:'Private academy access is not configured.'},{status:503});
  try{const raw=await req.text();if(raw.length>30000)return NextResponse.json({error:'Request too large.'},{status:413});const b=JSON.parse(raw);if(typeof b.mode!=='string')throw Error('Invalid practice mode');
  if(b.mode==='founder'){if(!cases.some(c=>c.id===b.caseId)||typeof b.question!=='string'||b.question.length>2000||!Array.isArray(b.revealed))throw Error('Invalid founder request');return NextResponse.json(askFounder(b.caseId,b.question,b.revealed.filter((x:unknown)=>typeof x==='string')));}
  if(b.mode==='case-assessment'){if(!cases.some(c=>c.id===b.caseId)||!Array.isArray(b.steps)||b.steps.length!==7||!b.steps.every((s:unknown)=>typeof s==='string'&&s.trim().length>=25&&s.length<=4000)||!Array.isArray(b.revealed)||b.revealed.length<2||typeof b.margin!=='string'||typeof b.cac!=='string'||!b.margin.trim()||!b.cac.trim())return NextResponse.json({error:'Complete all seven SPS steps, uncover two facts, and calculate operating margin and CAC before requesting the answer key.'},{status:400});const report=assessCase(b.caseId,b);const ai=await aiCoach({case:cases.find(c=>c.id===b.caseId),answerKey:report.answerKey,report,spsSource:'Business Re-Imagined slides 42–44; source pack supplied by user'},JSON.stringify({steps:b.steps,margin:b.margin,cac:b.cac}));return NextResponse.json({...report,aiFeedback:ai.text,aiStatus:ai.status});}

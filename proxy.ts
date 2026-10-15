@@ -1,4 +1,0 @@
-import {NextRequest,NextResponse} from 'next/server';
-import {verifyAccess} from '@/lib/access';
-export function proxy(req:NextRequest){if(req.nextUrl.pathname.startsWith('/access')||req.nextUrl.pathname==='/api/access')return NextResponse.next();const secret=process.env.ACADEMY_ACCESS_PASSWORD;if(!secret){if(process.env.NODE_ENV==='production'&&process.env.ACADEMY_LOCAL_DEMO!=='true')return new NextResponse('Private academy is not configured. Set ACADEMY_ACCESS_PASSWORD in server environment, or ACADEMY_LOCAL_DEMO=true for a local-only demo.',{status:503});return NextResponse.next();}if(verifyAccess(req.cookies.get('academy-access')?.value||'',secret))return NextResponse.next();if(req.nextUrl.pathname.startsWith('/api/'))return NextResponse.json({error:'Sign in to the private academy.'},{status:401});return NextResponse.redirect(new URL('/access',req.url));}
-export const config={matcher:['/((?!_next/static|_next/image|favicon.ico).*)']};

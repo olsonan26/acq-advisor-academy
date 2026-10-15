@@ -1,5 +1,9 @@
 # Verification record
 
+## Public access change — October 15, 2026
+
+The academy's custom password gate, signed access cookie, redirect, and API sign-in checks have been removed. The dashboard and `/api/practice` are intentionally accessible without an academy password. The previous access verification below is retained as historical test evidence only, not the current expected behavior. The core unit suite now has 17 tests; use `node scripts/public-access-test.cjs` against a running server to check public access.
+
 Validated October 12, 2026 (user's Mountain time context).
 
 ## Priority workflows
